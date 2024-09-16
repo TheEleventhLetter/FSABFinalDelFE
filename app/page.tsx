@@ -1,4 +1,6 @@
+
 import CoolButton from "./components/CoolButton"
+import WebQuestion from "./components/WebQuestion"
 import classes from "./main-page-styles.module.css"
 
 export default function Home(){
@@ -18,10 +20,15 @@ export default function Home(){
       The first button has places I <span className={classes.highlight}>want to visit</span>.
       </p>
       <div className={classes.redirectButton}>
-        <CoolButton text={"Visited"}>
+        <CoolButton text={"Visited"} linkURL={"http://localhost:3000/locationsVisited"}>
         </CoolButton>
-        <CoolButton text={"Want To Visit"}>
+        <CoolButton text={"Want To Visit"} linkURL={"http://localhost:3000/locationsToVisit"}>
         </CoolButton>
+        <br></br>
+        <br></br>
+        <WebQuestion>
+
+        </WebQuestion>
       </div>
     </div>
   )
