@@ -1,14 +1,14 @@
 'use client'
 import { useEffect, useState } from "react"
-import classes from "./visited-table-style.module.css"
+import classes from "./to-visit-table-styles.module.css"
 
-function VisitedTable() {
+function ToVisitTable() {
     // Array of students state
     const [locations, setLocations] = useState([])
     // A function to get all of the students from the frontend. MAKE SURE your backend is running on port 8080!
     async function getAllLocations() {
         // fetch the URL 
-        const res = await fetch("http://localhost:8080/locationsVisited", {
+        const res = await fetch("http://localhost:8080/locationsToVisit", {
             method: "GET",
         })
         // We turn the result into a JSON. We could have also turned it into a string, for instance
@@ -23,23 +23,19 @@ function VisitedTable() {
 
     return (
         <div>
-            <h2 className={classes.center}>Place's I've Visited!</h2>
+            <h2 className={classes.center}>Place's I want to Visit!</h2>
             <br/>
             <br/>
             <table className={classes.table}>
                 <tbody >
                 <tr className = {classes.row}>
-                    <th>Name</th>
-                    <th>When I Visited</th>
-                    <th>Rating out of 5</th>
-                    <th>Foods I Ate!</th>
+                    <th>Name of place</th>
+                    <th>What I want to eat there</th>
                 </tr>
             {
                 locations.map((location) => 
                     <tr key={location.id} className={classes.row}>
                         <td>{location.locationName}</td>
-                        <td>{location.locationYear}</td>
-                        <td>{location.locationRating}</td>
                         <td>{location.locationFoods.join(", ")}</td>
                     </tr>
                 )
@@ -49,4 +45,4 @@ function VisitedTable() {
         </div>
     )
 }
-export default VisitedTable;
+export default ToVisitTable;
