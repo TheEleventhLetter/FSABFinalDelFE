@@ -3,20 +3,15 @@ import { useEffect, useState } from "react"
 import classes from "./to-visit-comment-table-styles.module.css"
 
 function ToVisitCommentTable() {
-    // Array of students state
     const [comments, setComments] = useState([])
-    // A function to get all of the students from the frontend. MAKE SURE your backend is running on port 8080!
     async function getAllComments() {
-        // fetch the URL 
         const res = await fetch("http://localhost:8080/locationsToVisitComments", {
             method: "GET",
         })
-        // We turn the result into a JSON. We could have also turned it into a string, for instance
         const resJSON = await res.json()
         setComments(resJSON)
     }
 
-    // You can use a side effect to the page loading by entering an empty [] dependency array
     useEffect(() => {
         getAllComments()
     }, [])
